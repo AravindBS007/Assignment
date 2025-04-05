@@ -10,7 +10,7 @@ def load_config(file_path):
         return yaml.safe_load(file)
 def check_health(endpoint):
     url = endpoint['url']
-    method = endpoint.get('method', 'GET')  # Default method to GET
+    method = endpoint.get('method', 'GET') 
     headers = endpoint.get('headers', {})
     body = endpoint.get('body')
 
@@ -20,7 +20,7 @@ def check_health(endpoint):
         except json.JSONDecodeError:
             body = None
     try:
-        response = requests.request(method, url, headers=headers, json=body, timeout=0.5)  # 500ms timeout
+        response = requests.request(method, url, headers=headers, json=body, timeout=0.5)  
         if 200 <= response.status_code < 300:
             return "UP"
         else:
